@@ -20,7 +20,7 @@ const NavDashBoard = () => {
 
     const handleLogout = () => {
         localStorage.clear()
-        window.location.replace('/login')
+        window.location.replace('/')
     }
 
     return (
@@ -42,7 +42,7 @@ const NavDashBoard = () => {
                 <div className="home-container">
                     <img className="icon" src={HomeIcon} alt="" />
                     {isOpenNavbar ? null :
-                        <p className="label" onClick={() => navigation('/')}>Trang chủ</p>
+                        <p className="label" onClick={() => navigation('/dashboard/home')}>Trang chủ</p>
                     }
                 </div>
                 <hr />
@@ -53,25 +53,25 @@ const NavDashBoard = () => {
                     <div className="item-container">
                         <img className="icon" src={ProductIcon} alt="" />
                         {isOpenNavbar ? null :
-                            <p className="label" onClick={() => navigation('/product')}>Sản phẩm</p>
+                            <p className="label" onClick={() => navigation('/dashboard/product')}>Sản phẩm</p>
                         }
                     </div>
                     <div className="item-container">
                         <img className="icon" src={VoucherIcon} alt="" />
                         {isOpenNavbar ? null :
-                            <p className="label" onClick={() => navigation('/voucher')}>Mã khuyến mãi</p>
+                            <p className="label" onClick={() => navigation('/dashboard/voucher')}>Mã khuyến mãi</p>
                         }
                     </div>
                     <div className="item-container">
                         <img className="icon" src={PaymentIcon} alt="" />
                         {isOpenNavbar ? null :
-                            <p className="label" onClick={() => navigation('/payment')}>Phương thức thanh toán</p>
+                            <p className="label" onClick={() => navigation('/dashboard/payment')}>Phương thức thanh toán</p>
                         }
                     </div>
                     <div className="item-container">
                         <img className="icon" src={ShippIcon} alt="" />
                         {isOpenNavbar ? null :
-                            <p className="label" onClick={() => navigation('/shipp')}>Vận chuyển</p>
+                            <p className="label" onClick={() => navigation('/dashboard/shipp')}>Vận chuyển</p>
                         }
                     </div>
                 </div>
@@ -83,19 +83,19 @@ const NavDashBoard = () => {
                     <div className="item-container">
                         <img className="icon" src={AuthIcon} alt="" />
                         {isOpenNavbar ? null :
-                            <p className="label" onClick={() => navigation('/author')}>Khách hàng</p>
+                            <p className="label" onClick={() => navigation('/dashboard/author')}>Khách hàng</p>
                         }
                     </div>
                     <div className="item-container">
                         <img className="icon" src={CategoryIcon} alt="" />
                         {isOpenNavbar ? null :
-                            <p className="label" onClick={() => navigation('/order')}>Đặt hàng</p>
+                            <p className="label" onClick={() => navigation('/dashboard/order')}>Đặt hàng</p>
                         }
                     </div>
                     <div className="item-container">
                         <img className="icon" src={PaymentIcon} alt="" />
                         {isOpenNavbar ? null :
-                            <p className="label" onClick={() => navigation('/staff')}>Nhân viên</p>
+                            <p className="label" onClick={() => navigation('/dashboard/staff')}>Nhân viên</p>
                         }
                     </div>
                 </div>

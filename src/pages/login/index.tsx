@@ -42,12 +42,12 @@ const LoginDashBoard = () => {
         })
             .then(function (response) {
                 console.log(response);
-                navigate('/')
                 localStorage.setItem('id', response.data._id)
                 localStorage.setItem('name', response.data.name)
                 localStorage.setItem('isAdmin', response.data.isAdmin)
 
                 toastMessage('success', 'Đăng nhập thành công')
+                navigate('/dashboard/home')
             })
             .catch(function (error) {
                 console.log(error);

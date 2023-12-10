@@ -9,6 +9,7 @@ import Author from "./pages/author";
 import Order from "./pages/order";
 import History from "./pages/history";
 import Staff from "./pages/staff";
+import { Home } from "./pages/home";
 
 
 
@@ -16,43 +17,47 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/login",
+      path: "/",
       element: <LoginDashBoard />,
     },
     {
-      path: '/',
+      path: '/dashboard',
       element: <NavDashBoard />,
       children: [
         {
-          path: '/product',
+          path: "/dashboard/home",
+          element: <Home />,
+        },
+        {
+          path: '/dashboard/product',
           element: <Product />,
         },
         {
-          path: '/voucher',
+          path: '/dashboard/voucher',
           element: <Voucher />,
         },
         {
-          path: '/payment',
+          path: '/dashboard/payment',
           element: <Payment />,
         },
         {
-          path: '/shipp',
+          path: '/dashboard/shipp',
           element: <Shipp />,
         },
         {
-          path: '/author',
+          path: '/dashboard/author',
           element: <Author />,
         },
         {
-          path: '/order',
+          path: '/dashboard/order',
           element: <Order />,
         },
         {
-          path: '/history',
+          path: '/dashboard/history',
           element: <History />,
         },
         {
-          path: '/staff',
+          path: '/dashboard/staff',
           element: <Staff />,
         },
       ]

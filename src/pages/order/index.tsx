@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import './styles.scss'
 import Button from "@mui/material/Button";
-import Checkbox from '@mui/material/Checkbox';
 import axios from "axios";
 import moment from "moment";
 import Box from '@mui/material/Box';
@@ -12,7 +11,6 @@ import Select from '@mui/material/Select';
 import CustomModal from "../../components/modal";
 import CancelIcon from '../../assets/icons/cancel.png'
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 interface DataOrder {
     customerId: string,
@@ -30,7 +28,6 @@ interface OrderProduct {
 
 const Order = () => {
 
-    const [listIdSelected, setListIdSelected] = useState<string[]>([])
     const [dataOrder, setDataOrder] = useState<DataOrder[]>([]);
     const [open, setOpen] = React.useState(false);
     const [orderSelected, setOrderSelected] = React.useState<any>();
@@ -54,15 +51,6 @@ const Order = () => {
     }
 
     // [1,2,3,4]
-    const handleSelectOrder = (id?: string) => {
-        if (listIdSelected?.includes(id as string)) {
-            setListIdSelected(listIdSelected.filter((x) => x !== id))
-        } else {
-            setListIdSelected(listIdSelected.concat(id as string))
-        }
-    }
-
-    console.log('listIdSelected: ', listIdSelected);
 
     const handleConvertTimeStamp = (timeStamp: string) => {
 

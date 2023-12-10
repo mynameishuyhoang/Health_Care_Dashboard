@@ -12,7 +12,7 @@
 
     .data-product-container {
         overflow: auto;
-        height: 90vh;
+        height: calc(100vh - 300px);
 
         .data-label {
             display: flex;
@@ -30,5 +30,11 @@
                 }
             }
         }
+    }
+
+    .pagination-container {
+        margin: auto;
+        justify-content: center;
+        margin-top: 20px;
     }
 }

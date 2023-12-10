@@ -3,6 +3,11 @@ import './styles.scss'
 import Button from "@mui/material/Button";
 import Checkbox from '@mui/material/Checkbox';
 import axios from "axios";
+import Stack from "@mui/material/Stack";
+import { Box, Pagination, TextField } from "@mui/material";
+import CancelIcon from '../../assets/icons/cancel.png'
+import CustomModal from "../../components/modal";
+
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -25,17 +30,35 @@ const Product = () => {
 
     const [listIdSelected, setListIdSelected] = useState<string[]>([])
     const [products, setProducts] = useState<Products[]>([]);
+    const [totalPage, setTotalPage] = useState(1)
+    const [pageNumber, setPageNumber] = useState(1)
+    const [open, setOpen] = React.useState(false);
 
-    const handleGetProducts = async () => {
+
+    const handleClose = () => setOpen(false);
+
+
+    const handleGetProducts = async (pageSize?: number, pageNumber?: number) => {
         try {
-            const { data } = await axios.post(`https://healthcare-bkmr.onrender.com/api/product`)
+            const { data } = await axios.post(`https://healthcare-bkmr.onrender.com/api/product/get`, null, {
+                params: {
+                    pageSize: pageSize,
+                    pageNumber: pageNumber
+                }
+            })
             console.log('data: ', data);
             setProducts(data?.data || [])
+            setTotalPage(data?.totalPage)
 
         } catch (err) {
             console.log(err)
         }
     }
+
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPageNumber(value);
+        handleGetProducts(6, value)
+    };
 
     // [1,2,3,4]
     const handleSelectProducts = (id?: string) => {
@@ -50,7 +73,7 @@ const Product = () => {
 
 
     React.useEffect(() => {
-        handleGetProducts()
+        handleGetProducts(6, 1)
     }, [])
 
     return (
@@ -111,6 +134,81 @@ const Product = () => {
                     </div>
                 ))}
             </div>
+            <Stack spacing={2} style={{ marginBottom: '20px' }}>
+                <Pagination className="pagination-container" color="primary" count={totalPage} page={pageNumber} onChange={handleChange} />
+            </Stack>
+            <CustomModal isOpen={open} handleClose={handleClose} style={{
+                width: '600px', height: '300px',
+                background: 'white', outline: '1px solid gray', borderRadius: '12px'
+            }}>
+                <>
+                    <p style={{ fontSize: '24px', fontWeight: '600', textAlign: 'center', color: '#FF8F8F' }}>Thêm đơn vị vận chuyển</p>
+                    <img className="icon-cancel" onClick={handleClose} src={CancelIcon} alt="" />
+                    <hr />
+                    <Box
+                        component="form"
+                        sx={{
+                            '& > :not(style)': { m: 1, width: '100%' },
+                            display: 'grid',
+                            margin: '10px 20%'
+                        }}
+                        noValidate
+                        autoComplete="off"
+                    >
+                        <TextField id="outlined-basic" label="Tên đơn vị vận chuyển" variant="outlined" required />
+                        <TextField id="outlined-basic" label="Giá vận chuyển" variant="outlined" type="number" required />
+                    </Box>
+                    <Button style={{
+                        display: 'flex',
+                        outline: '1px solid, gray',
+                        padding: '8px',
+                        background: 'red',
+                        color: 'white',
+                        width: '80px',
+                        margin: 'auto'
+                    }}
+
+
+                    >Thêm</Button>
+                </>
+
+            </CustomModal>
+            <CustomModal isOpen={open} handleClose={handleClose} style={{
+                width: '600px', height: '300px',
+                background: 'white', outline: '1px solid gray', borderRadius: '12px'
+            }}>
+                <>
+                    <p style={{ fontSize: '24px', fontWeight: '600', textAlign: 'center', color: '#FF8F8F' }}>Cập nhật đơn vị vận chuyển</p>
+                    <img className="icon-cancel" onClick={handleClose} src={CancelIcon} alt="" />
+                    <hr />
+                    <Box
+                        component="form"
+                        sx={{
+                            '& > :not(style)': { m: 1, width: '100%' },
+                            display: 'grid',
+                            margin: '10px 20%'
+                        }}
+                        noValidate
+                        autoComplete="off"
+                    >
+                        <TextField id="outlined-basic" label="Tên đơn vị vận chuyển" variant="outlined" required />
+                        <TextField id="outlined-basic" label="Giá vận chuyển" variant="outlined" type="number" required />
+                    </Box>
+                    <Button style={{
+                        display: 'flex',
+                        outline: '1px solid, gray',
+                        padding: '8px',
+                        background: 'red',
+                        color: 'white',
+                        width: '80px',
+                        margin: 'auto'
+                    }}
+
+
+                    >Thêm</Button>
+                </>
+
+            </CustomModal>
         </div>
     )
 }
