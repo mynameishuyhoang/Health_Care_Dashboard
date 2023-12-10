@@ -1,0 +1,34 @@
+.shipp-container {
+    .data-action {
+        .btn {
+            border: 1px solid gray;
+            margin: 5px;
+        }
+    }
+
+    .label-shipp-container {
+        display: flex;
+    }
+
+    .data-shipp-container {
+        overflow: auto;
+        height: 90vh;
+
+        .data-label {
+            display: flex;
+        }
+
+        .data-shipp {
+            display: flex;
+
+            .select-data {
+                width: 5%;
+
+                &:hover {
+                    background-color: white;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}

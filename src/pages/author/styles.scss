@@ -1,0 +1,31 @@
+.author-container {
+    .data-action {
+        .btn {
+            border: 1px solid gray;
+            margin: 5px;
+        }
+    }
+
+    .label-author-container {
+        display: flex;
+    }
+
+    .data-author-container {
+        .data-label {
+            display: flex;
+        }
+
+        .data-author {
+            display: flex;
+
+            .select-data {
+                width: 5%;
+
+                &:hover {
+                    background-color: white;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}

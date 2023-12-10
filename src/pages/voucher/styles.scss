@@ -1,0 +1,31 @@
+.product-container {
+    .data-action {
+        .btn {
+            border: 1px solid gray;
+            margin: 5px;
+        }
+    }
+
+    .label-product-container {
+        display: flex;
+    }
+
+    .data-product-container {
+        .data-label {
+            display: flex;
+        }
+
+        .data-product {
+            display: flex;
+
+            .select-data {
+                width: 5%;
+
+                &:hover {
+                    background-color: white;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+}
