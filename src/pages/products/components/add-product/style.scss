@@ -1,0 +1,16 @@
+form {
+    display: grid;
+
+    label {
+        font-weight: 600;
+    }
+
+    .input-data {
+        margin: 10px 0;
+    }
+
+    .add-data-product {
+        width: 100px;
+        margin: auto;
+    }
+}

@@ -10,6 +10,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import CustomModal from "../../components/modal";
 import CancelIcon from '../../assets/icons/cancel.png'
+import { toastMessage } from "../../components/message";
 
 
 interface DataOrder {
@@ -77,8 +78,8 @@ const Order = () => {
                 status: status
             })
             console.log('Data-after-update-status: ', data?.data);
-            // toastMessage('success', 'Huỷ đặt hàng thành công')
             handleGetOrder()
+            toastMessage('success', 'Cập nhật đơn hàng thành công')
         } catch (error) {
             console.log(error);
         }

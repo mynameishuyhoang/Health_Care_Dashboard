@@ -63,12 +63,6 @@ const NavDashBoard = () => {
                         }
                     </div>
                     <div className="item-container">
-                        <img className="icon" src={PaymentIcon} alt="" />
-                        {isOpenNavbar ? null :
-                            <p className="label" onClick={() => navigation('/dashboard/payment')}>Phương thức thanh toán</p>
-                        }
-                    </div>
-                    <div className="item-container">
                         <img className="icon" src={ShippIcon} alt="" />
                         {isOpenNavbar ? null :
                             <p className="label" onClick={() => navigation('/dashboard/shipp')}>Vận chuyển</p>

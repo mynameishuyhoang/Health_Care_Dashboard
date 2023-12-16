@@ -7,6 +7,8 @@ import Stack from "@mui/material/Stack";
 import { Box, Pagination, TextField } from "@mui/material";
 import CancelIcon from '../../assets/icons/cancel.png'
 import CustomModal from "../../components/modal";
+import { useForm } from "react-hook-form";
+import AddModal from "./components/add-product";
 
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -21,7 +23,7 @@ interface Products {
     sugar: number;
     starch: number;
     inputPrice: number;
-    outputPrice: number;
+    exportPrice: number;
     amount: number;
     description: string;
 }
@@ -36,6 +38,7 @@ const Product = () => {
 
 
     const handleClose = () => setOpen(false);
+    const handleAddProduct = () => setOpen(true)
 
 
     const handleGetProducts = async (pageSize?: number, pageNumber?: number) => {
@@ -85,7 +88,7 @@ const Product = () => {
             }}>Quản lý sản phẩm</p>
             <hr />
             <div className="data-action">
-                <Button className="btn">Thêm</Button>
+                <Button className="btn" onClick={handleAddProduct}>Thêm</Button>
                 <Button className="btn">Xoá</Button>
                 <Button className="btn">Cập nhật</Button>
             </div>
@@ -137,7 +140,8 @@ const Product = () => {
             <Stack spacing={2} style={{ marginBottom: '20px' }}>
                 <Pagination className="pagination-container" color="primary" count={totalPage} page={pageNumber} onChange={handleChange} />
             </Stack>
-            <CustomModal isOpen={open} handleClose={handleClose} style={{
+            <AddModal isOpenAdd={open} handleCloseAdd={handleClose} handleGetProducts={handleGetProducts} />
+            {/* <CustomModal isOpen={open} handleClose={handleClose} style={{
                 width: '600px', height: '300px',
                 background: 'white', outline: '1px solid gray', borderRadius: '12px'
             }}>
@@ -208,7 +212,7 @@ const Product = () => {
                     >Thêm</Button>
                 </>
 
-            </CustomModal>
+            </CustomModal> */}
         </div>
     )
 }
